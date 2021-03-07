@@ -1,0 +1,4 @@
+rootProject.name = 'fuyi-mvc'
+include 'fuyi-mvc-core'
+include 'fuyi-mvc-example'
+

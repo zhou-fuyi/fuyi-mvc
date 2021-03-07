@@ -1,0 +1,6 @@
+dependencies {
+    compile project(":fuyi-mvc-core")
+}
+
+test {
+}

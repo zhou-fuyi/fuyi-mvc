@@ -1,0 +1,49 @@
+plugins {
+    id 'java'
+}
+
+group 'org.fuyi.mvc'
+version '1.0-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+    maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
+    mavenCentral()
+}
+
+subprojects {
+    apply plugin: 'java' /* java是Gradle的核心插件，是内置的，内置插件不需要配置依赖路径 */
+    apply plugin: 'idea' /* 同上  让Gradle自动生成Intellij的项目文件*/
+
+    group 'org.fuyi.mvc'
+    version '1.0-SNAPSHOT'
+    sourceCompatibility = '1.8'
+
+    repositories {
+        mavenLocal()
+        maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
+        mavenCentral()
+    }
+
+    dependencies {
+        testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
+        testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+    }
+
+    test {
+        useJUnitPlatform()
+    }
+
+    //在多模块下,授权打包依赖模块
+    jar {
+        enabled = true
+    }
+
+}
+
+/**
+ * 关闭父项目的打包功能
+ */
+jar{
+    enabled=false
+}
